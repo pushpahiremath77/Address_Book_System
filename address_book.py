@@ -47,6 +47,7 @@ class Contact:
         self.phone = phone
         self.email = email
 
+
 class AddressBook:
     def __init__(self):
         self.contacts = {}
@@ -59,7 +60,6 @@ class AddressBook:
             self.contacts[contact_key] = contact
             print(f"Added contact for {contact.first_name} {contact.last_name} with phone: {contact.phone}.")
 
-
     def display_contacts(self):
         if not self.contacts:
             print("No contacts in the address book.")
@@ -69,13 +69,22 @@ class AddressBook:
                 print(f"\n{contact}")
 
     def edit_contact(self, first_name, last_name, phone):
-        contact_key = f"{first_name} {last_name} {phone}" 
+        contact_key = f"{first_name} {last_name} {phone}"
     
         if contact_key in self.contacts:
             contact = self.contacts[contact_key]
             print(f"Found contact: \n{contact}")
             contact.edit_contact()
             print(f"Contact updated: \n{contact}")
+        else:
+            print(f"No contact found with the name {first_name} {last_name} and phone number {phone}.")
+
+    def delete_contact(self, first_name, last_name, phone):
+        contact_key = f"{first_name} {last_name} {phone}"
+        
+        if contact_key in self.contacts:
+            del self.contacts[contact_key]
+            print(f"Deleted contact: {first_name} {last_name} with phone number {phone}.")
         else:
             print(f"No contact found with the name {first_name} {last_name} and phone number {phone}.")
 
@@ -101,6 +110,13 @@ class AddressBookMain:
         phone = input("Enter the phone number of the contact to edit: ")
         self.address_book.edit_contact(first_name, last_name, phone)
 
+    def delete_contact(self):
+        first_name = input("Enter the first name of the contact to delete: ")
+        last_name = input("Enter the last name of the contact to delete: ")
+        phone = input("Enter the phone number of the contact to delete: ")
+        self.address_book.delete_contact(first_name, last_name, phone)
+
+
 if __name__ == "__main__":
     address_book_main = AddressBookMain()
     address_book_main.display()
@@ -109,7 +125,8 @@ if __name__ == "__main__":
         print("\n1. Add a new contact")
         print("2. Display all contacts")
         print("3. Edit an existing contact")
-        print("4. Exit")
+        print("4. Delete a contact")
+        print("5. Exit")
 
         choice = input("Enter your choice: ")
 
@@ -120,6 +137,8 @@ if __name__ == "__main__":
         elif choice == '3':
             address_book_main.edit_existing_contact()
         elif choice == '4':
+            address_book_main.delete_contact()
+        elif choice == '5':
             print("Exiting the program.")
             break
         else:
