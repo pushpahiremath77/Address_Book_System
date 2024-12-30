@@ -18,18 +18,20 @@ class Contact:
         self.zip = input("Enter your pin code: ")
         self.phone = input("Enter phone number: ")
         self.email = input("Enter your email address: ")
-        
-    def __str__(self):
-        return (f"Contact created for {self.first_name} {self.last_name}")
 
-contact1 = Contact()
-contact1.create_contact()
-print(contact1)
+    def __str__(self):
+        return f"Contact created for {self.first_name} {self.last_name}"
+
 
 class AddressBookMain:
-
     def display(self):
-        print("Welcome to Address Book program in AddressBookMain class")
+        print("Welcome to Address Book")
 
-address_book_obj = AddressBookMain()
-address_book_obj.display()
+
+if __name__ == "__main__":
+    address_book_main = AddressBookMain()
+    address_book_main.display()
+
+    contact1 = Contact()
+    contact1.create_contact() 
+    print(contact1)  
