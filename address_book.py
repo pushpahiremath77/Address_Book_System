@@ -1,5 +1,5 @@
 class AddressBookMain:
-    
+
     def display(self):
         print("Welcome to the Address Book System!")
 
