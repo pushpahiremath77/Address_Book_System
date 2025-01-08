@@ -11,7 +11,7 @@ class Contact:
 
     def create_contact(self):
         self.first_name = input("Enter First Name: ")
-        self.last_name = input("Enter Last name: ")
+        self.last_name = input("Enter Last Name: ")
         self.address = input("Enter your Address: ")
         self.city = input("Enter your City: ")
         self.state = input("Enter your State: ")
@@ -62,7 +62,6 @@ class AddressBookMain:
 
     def show_all_contacts(self):
         self.address_book.display_contacts()
-
 
 if __name__ == "__main__":
     address_book_main = AddressBookMain()
