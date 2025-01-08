@@ -47,7 +47,6 @@ class Contact:
         self.phone = phone
         self.email = email
 
-
 class AddressBook:
     def __init__(self):
         self.contacts = {}
@@ -88,7 +87,6 @@ class AddressBook:
         else:
             print(f"No contact found with the name {first_name} {last_name} and phone number {phone}.")
 
-
 class AddressBookMain:
     def __init__(self):
         self.address_book = AddressBook()
@@ -97,9 +95,14 @@ class AddressBookMain:
         print("Welcome to the Address Book program")
 
     def add_new_contact(self):
-        contact = Contact()
-        contact.create_contact()
-        self.address_book.add_contact(contact)
+        while True:
+            contact = Contact()
+            contact.create_contact()
+            self.address_book.add_contact(contact)
+            
+            add_another = input("Do you want to add another contact? (y/n): ")
+            if add_another.lower() != 'y':
+                break
 
     def show_all_contacts(self):
         self.address_book.display_contacts()
@@ -115,7 +118,6 @@ class AddressBookMain:
         last_name = input("Enter the last name of the contact to delete: ")
         phone = input("Enter the phone number of the contact to delete: ")
         self.address_book.delete_contact(first_name, last_name, phone)
-
 
 if __name__ == "__main__":
     address_book_main = AddressBookMain()
